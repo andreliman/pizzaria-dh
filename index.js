@@ -2,32 +2,7 @@ const express = require("express");
 const app = express();
 
 
-const pizzas = [
-  {
-    id: 1,
-    sabor: "Quatro queijos",
-    categoria: "Salgada",
-    preco: 15.89,
-  },
-  {
-    id: 2,
-    sabor: "Morango com Nutella",
-    categoria: "Doce",
-    preco: 30,
-  },
-  {
-    id: 3,
-    sabor: "Brócolis",
-    categoria: "Vegetariana",
-    preco: 35,
-  },
-  {
-    id: 4,
-    sabor: "Lombo candense",
-    categoria: "Salgada",
-    preco: 25,
-  },
-];
+const pizzas = require("./database/pizzas.json");
 
 const listarTodasAsPizzas = () => {
   let conteudo = [];
@@ -63,10 +38,13 @@ const encontrarPizza = (sabor) => {
   console.log(pizzaEncontrada ? pizzaEncontrada : `Pizza sabor ${sabor}não encontrada!`);
 };
 
-encontrarPizza("Brócolis");
+// encontrarPizza("Brócolis");
 
-adicionarPizza("Presunto", "Salgada", 25);
-adicionarPizza("Catupiry", "Vegetariana", 40);
+// adicionarPizza("Presunto", "Salgada", 25);
+// adicionarPizza("Catupiry", "Vegetariana", 40);
 
-console.log(`Seguem todos os sabores do cardápio:`);
-console.log(listarTodasAsPizzas());
+// console.log(`Seguem todos os sabores do cardápio:`);
+// console.log(listarTodasAsPizzas());
+
+const portaServidor = 3000;
+app.listen(portaServidor, () => console.log(`O servidor ${portaServidor} está online!`));
