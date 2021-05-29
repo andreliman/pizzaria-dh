@@ -51,16 +51,15 @@ app.put('/pizzas/:id', (req, res) => {
   res.json(pizza);
 });
 
-// app.delete('/pizzas/:id', (req, res) => {
-//   const { id } = req.params;
+app.delete('/pizzas/:id', (req, res) => {
+  const { id } = req.params;
 
-//   const index = pizzas.findIndex(pizza => pizza.id === Number(id));
+  const index = pizzas.findIndex(pizza => pizza.id === Number(id));
   
-//   pizzas.splice(index, 1);
+  pizzas.splice(index, 1);
 
-//   res.status(204).send();
-// });
-
+  res.status(204).send();
+});
 
 const adicionarPizza = function (sabor, categoria, preco) {
   const pizzaNova = {
