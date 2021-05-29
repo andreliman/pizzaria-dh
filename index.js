@@ -22,6 +22,21 @@ const pizzas = require("./database/pizzas.json");
 
 app.get("/pizzas", (req, res) => res.json(pizzas));
 
+app.post("/pizzas", (req, res) => {
+  const { body: { sabor, categoria, preco } } = req;
+  const id = pizzas[pizzas.length - 1].id + 1;
+
+  const novaPizza = {
+      id,
+      sabor,
+      categoria,
+      preco
+  };
+
+  pizzas.push(novaPizza);
+  res.status(201).json(novaPizza);
+});
+
 // DESAFIO: Criar uma rota para criar uma nova pizza. Utilizem o método http correto, adicionem no array de pizzas e retorne essa nova pizza como json. IMPORTANTE: a nova pizza precisa ter id. 
 
 const adicionarPizza = function (sabor, categoria, preco) {
@@ -52,5 +67,5 @@ const encontrarPizza = (sabor) => {
 // console.log(`Seguem todos os sabores do cardápio:`);
 // console.log(listarTodasAsPizzas());
 
-const portaServidor = 3000;
-app.listen(portaServidor, () => console.log(`O servidor ${portaServidor} está online!`));
+const port = 3000;
+app.listen(port, () => console.log(`O servidor ${port} está online!`));
