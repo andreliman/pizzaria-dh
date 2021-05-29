@@ -37,7 +37,30 @@ app.post("/pizzas", (req, res) => {
   res.status(201).json(novaPizza);
 });
 
-// DESAFIO: Criar uma rota para criar uma nova pizza. Utilizem o método http correto, adicionem no array de pizzas e retorne essa nova pizza como json. IMPORTANTE: a nova pizza precisa ter id. 
+// DESAFIO: Criar uma rota para criar uma nova pizza. Utilizem o método http correto, adicionem no array de pizzas e retorne essa nova pizza como json. IMPORTANTE: a nova pizza precisa ter id.
+
+app.put('/pizzas/:id', (req, res) => {
+  const { id } = req.params;
+  const { body: {sabor, categoria, preco} } = req;
+
+  const pizza = pizzas.find(pizza => pizza.id === Number(id));
+  pizza.sabor = sabor;
+  pizza.categoria = categoria;
+  pizza.preco = preco;
+
+  res.json(pizza);
+});
+
+// app.delete('/pizzas/:id', (req, res) => {
+//   const { id } = req.params;
+
+//   const index = pizzas.findIndex(pizza => pizza.id === Number(id));
+  
+//   pizzas.splice(index, 1);
+
+//   res.status(204).send();
+// });
+
 
 const adicionarPizza = function (sabor, categoria, preco) {
   const pizzaNova = {
