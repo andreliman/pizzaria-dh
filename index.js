@@ -61,25 +61,25 @@ app.delete('/pizzas/:id', (req, res) => {
   res.status(204).send();
 });
 
-const adicionarPizza = function (sabor, categoria, preco) {
-  const pizzaNova = {
-    id: pizzas[pizzas.length - 1].id + 1,
-    sabor,
-    categoria,
-    preco,
-  };
+// const adicionarPizza = function (sabor, categoria, preco) {
+//   const pizzaNova = {
+//     id: pizzas[pizzas.length - 1].id + 1,
+//     sabor,
+//     categoria,
+//     preco,
+//   };
 
-  pizzas.push(pizzaNova);
+//   pizzas.push(pizzaNova);
 
-  console.log(`A pizza de ${sabor} foi adicionada com sucesso!`);
-};
+//   console.log(`A pizza de ${sabor} foi adicionada com sucesso!`);
+// };
 
-const encontrarPizza = (sabor) => {
+// const encontrarPizza = (sabor) => {
   
-  const pizzaEncontrada = pizzas.find((pizza) => pizza.sabor === sabor);
+//   const pizzaEncontrada = pizzas.find((pizza) => pizza.sabor === sabor);
     
-  console.log(pizzaEncontrada ? pizzaEncontrada : `Pizza sabor ${sabor}não encontrada!`);
-};
+//   console.log(pizzaEncontrada ? pizzaEncontrada : `Pizza sabor ${sabor}não encontrada!`);
+// };
 
 // encontrarPizza("Brócolis");
 
