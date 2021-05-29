@@ -1,22 +1,28 @@
+const { json } = require("express");
 const express = require("express");
 const app = express();
 
+app.use(express.json());
 
 const pizzas = require("./database/pizzas.json");
 
-const listarTodasAsPizzas = () => {
-  let conteudo = [];
+// const listarTodasAsPizzas = () => {
+//   let conteudo = [];
 
-  pizzas.forEach((pizza) => {
-    conteudo += `
-        Sabor: ${pizza.sabor}
-        Categoria: ${pizza.categoria}
-        Preço: ${pizza.preco}
-        `;
-  });
+//   pizzas.forEach((pizza) => {
+//     conteudo += `
+//         Sabor: ${pizza.sabor}
+//         Categoria: ${pizza.categoria}
+//         Preço: ${pizza.preco}
+//         `;
+//   });
 
-  return conteudo;
-};
+//   return conteudo;
+// };
+
+app.get("/pizzas", (req, res) => res.json(pizzas));
+
+// DESAFIO: Criar uma rota para criar uma nova pizza. Utilizem o método http correto, adicionem no array de pizzas e retorne essa nova pizza como json. IMPORTANTE: a nova pizza precisa ter id. 
 
 const adicionarPizza = function (sabor, categoria, preco) {
   const pizzaNova = {
