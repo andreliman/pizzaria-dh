@@ -1,5 +1,7 @@
 const { json } = require("express");
 const express = require("express");
+const fs = require("fs");
+const { v4 } = require("uuid");
 const app = express();
 
 app.use(express.json());
@@ -24,16 +26,18 @@ app.get("/pizzas", (req, res) => res.json(pizzas));
 
 app.post("/pizzas", (req, res) => {
   const { body: { sabor, categoria, preco } } = req;
-  const id = pizzas[pizzas.length - 1].id + 1;
+  // const id = pizzas[pizzas.length - 1].id + 1;
 
   const novaPizza = {
-      id,
+      id: v4(),
       sabor,
       categoria,
       preco
   };
 
   pizzas.push(novaPizza);
+
+  fs.writeFileSync("./database/pizzas.json", JSON.stringify(pizzas));
   res.status(201).json(novaPizza);
 });
 
@@ -43,12 +47,19 @@ app.put('/pizzas/:id', (req, res) => {
   const { id } = req.params;
   const { body: {sabor, categoria, preco} } = req;
 
-  const pizza = pizzas.find(pizza => pizza.id === Number(id));
-  pizza.sabor = sabor;
-  pizza.categoria = categoria;
-  pizza.preco = preco;
+  const pizzaEncontrada = pizzas.find((pizza) => pizza.id === Number(id));
 
-  res.json(pizza);
+  if(!pizzaEncontrada) {
+    return res.status(400).json({ mensagem: "Pizza não encontrada!" });
+  };
+
+  pizzaEncontrada.sabor = sabor;
+  pizzaEncontrada.categoria = categoria;
+  pizzaEncontrada.preco = preco;
+
+  fs.writeFileSync("./database/pizzas.json", JSON.stringify(pizzas));
+
+  res.json(pizzaEncontrada);
 });
 
 app.delete('/pizzas/:id', (req, res) => {

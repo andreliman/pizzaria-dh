@@ -1,24 +1,24 @@
 [
   {
-    "id": 1,
+    "id": "e4ac3d0f-5c1d-4b4e-960b-89b32c024a4d",
     "sabor": "Quatro queijos",
     "categoria": "Salgada",
     "preco": 15.89
   },
   {
-    "id": 2,
+    "id": "8da3d544-715d-466c-b16a-80004aae17ee",
     "sabor": "Morango com Nutella",
     "categoria": "Doce",
     "preco": 30
   },
   {
-    "id": 3,
+    "id": "b3c7afd9-fe70-4ed0-b8b4-39bee463d4ae",
     "sabor": "Brócolis",
     "categoria": "Vegetariana",
     "preco": 35
   },
   {
-    "id": 4,
+    "id": "5727edab-9717-40e0-8e88-e613b4239dc4",
     "sabor": "Lombo candense",
     "categoria": "Salgada",
     "preco": 25
